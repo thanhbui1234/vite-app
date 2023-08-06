@@ -1,0 +1,64 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Product 1 update 2",
+      "price": "100000",
+      "image": "https://picsum.photos/200/100 ",
+      "description": "Description 1",
+      "categoryId": 1
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "price": 200,
+      "image": "https://picsum.photos/200/100 ",
+      "description": "Description 2",
+      "categoryId": 2
+    },
+    {
+      "id": 3,
+      "name": "Product 3",
+      "price": 300,
+      "image": "https://picsum.photos/200/100 ",
+      "description": "Description 3",
+      "categoryId": 1
+    }
+  ],
+
+  "categories": [
+    {
+      "id": 1,
+      "name": "Danh muc 1"
+    },
+    {
+      "id": 2,
+      "name": "Danh muc 2"
+    }
+  ],
+
+  "users": [
+    {
+      "id": 1,
+      "name": "admin",
+      "password": "123456",
+      "roleId": 1
+    },
+    {
+      "id": 2,
+      "name": "user",
+      "password": "123456",
+      "roleId": 2
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "name": "admin"
+    },
+    {
+      "id": 2,
+      "name": "user"
+    }
+  ]
+}
