@@ -44,7 +44,7 @@ const Homepage = () => {
         >
           {products.map((product) => {
             return (
-              <Link key={product.id} to={`/product/${product.id}`}>
+              <Link key={product.id} to={`/prod/${product.id}`}>
                 <h4>{product.name}</h4>
                 <img
                   style={{
