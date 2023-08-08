@@ -1,20 +1,20 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "Product 1 update 2",
+      "name": "Product 1 update 2123213213213213213",
       "price": "100000",
       "image": "https://picsum.photos/200/100 ",
       "description": "Description 1",
-      "categoryId": 1
+      "categoryId": 1,
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "Product 2",
-      "price": 200,
-      "image": "https://picsum.photos/200/100 ",
-      "description": "Description 2",
-      "categoryId": 2
+      "name": "3w4r",
+      "price": 12321,
+      "image": "213",
+      "description": "qưew",
+      "categoryId": 1,
+      "id": 4
     }
   ],
   "categories": [
@@ -23,22 +23,28 @@
       "name": "Danh muc 1"
     },
     {
-      "id": 2,
-      "name": "Danh muc 2"
+      "name": "Lau nhà test",
+      "id": 2
     }
   ],
   "users": [
     {
-      "id": 1,
-      "name": "admin",
+      "name": "admin test1",
       "password": "123456",
-      "roleId": 1
+      "role": "1",
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "user",
+      "name": "User test2",
       "password": "123456",
-      "roleId": 2
+      "role": 2,
+      "id": 2
+    },
+    {
+      "name": "23",
+      "password": "zsds",
+      "role": "1",
+      "id": 3
     }
   ],
   "roles": [

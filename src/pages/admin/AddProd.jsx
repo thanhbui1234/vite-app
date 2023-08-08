@@ -1,24 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Checkbox, Form, Input, InputNumber, Select } from "antd";
+import Swal from "sweetalert2";
 
-const AddProd = ({ addProduct }) => {
+const AddProd = () => {
+  const [categories, setCategories] = useState([]);
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+  });
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/categories`)
+      .then(({ data }) => setCategories(data));
+  }, []);
+  console.log(categories);
   const navigate = useNavigate();
-  const [inputValues, setInputValues] = useState();
-  const onHandleChange = (event) => {
-    setInputValues({ ...inputValues, [event.target.name]: event.target.value });
-  };
-  // const onHandleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(inputValues);
-  //   addProduct(inputValues);
-  //   navigate("/admin");
-  // };
   const onFinish = (values) => {
-    console.log({ values });
-    addProduct(values);
-    navigate("/admin");
+    axios
+      .post(`http://localhost:3000/products`, values)
+      .then(() => {
+        navigate("/admin");
+      })
+      .then(() => {
+        Toast.fire({
+          icon: "success",
+          title: "Thêm sản phẩm thành công",
+        });
+      });
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -26,21 +43,7 @@ const AddProd = ({ addProduct }) => {
   };
   return (
     <div>
-      {/* <form action="" onSubmit={onHandleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter Product Name"
-          onChange={onHandleChange}
-          name="product"
-        />
-        <input
-          type="text"
-          placeholder="Enter Product Name"
-          onChange={onHandleChange}
-          name="price"
-        />
-        <button type="submit">Add New</button>
-      </form> */}
+      <h2>ADD PRODUCT</h2>
       <Form
         name="basic"
         labelCol={{ span: 8 }}
@@ -52,9 +55,9 @@ const AddProd = ({ addProduct }) => {
         autoComplete="off"
       >
         <Form.Item
-          label="product"
-          name="product"
-          rules={[{ required: true, message: "Please input your product!" }]}
+          label="name"
+          name="name"
+          rules={[{ required: true, message: "Please input your name!" }]}
         >
           <Input />
         </Form.Item>
@@ -64,15 +67,48 @@ const AddProd = ({ addProduct }) => {
           name="price"
           rules={[{ required: true, message: "Please input your price!" }]}
         >
+          <InputNumber />
+        </Form.Item>
+        <Form.Item
+          label="image"
+          name="image"
+          rules={[{ required: true, message: "Please input your image!" }]}
+        >
           <Input />
         </Form.Item>
 
         <Form.Item
-          name="remember"
-          valuePropName="checked"
-          wrapperCol={{ offset: 8, span: 16 }}
+          label="description"
+          name="description"
+          rules={[
+            { required: true, message: "Please input your description!" },
+          ]}
         >
-          <Checkbox>Remember me</Checkbox>
+          <Input />
+        </Form.Item>
+        {/* <Form.Item
+          label="categoryId"
+          name="categoryId"
+          rules={[
+            { required: true, message: "Please input your description!" },
+          ]}
+        >
+          <Input />
+        </Form.Item> */}
+        <Form.Item
+          rules={[{ required: true, message: "Please input your Category!" }]}
+          name="categoryId"
+          label="Select"
+        >
+          <Select>
+            {categories.map((category, index) => {
+              return (
+                <Select.Option key={index} value={category.id}>
+                  {category.name}
+                </Select.Option>
+              );
+            })}
+          </Select>
         </Form.Item>
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
