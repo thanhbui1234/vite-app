@@ -11,10 +11,18 @@
     {
       "name": "3w4r",
       "price": 12321,
-      "image": "213",
+      "image": "21321321",
       "description": "qưew",
       "categoryId": 1,
       "id": 4
+    },
+    {
+      "name": "Thanh12",
+      "price": 123,
+      "image": "hehe",
+      "description": "123",
+      "categoryId": 2,
+      "id": 5
     }
   ],
   "categories": [
@@ -29,9 +37,6 @@
   ],
   "users": [
     {
-      "name": "admin test1",
-      "password": "123456",
-      "role": "1",
       "id": 1
     },
     {
@@ -41,9 +46,9 @@
       "id": 2
     },
     {
-      "name": "23",
-      "password": "zsds",
-      "role": "1",
+      "name": "asd123",
+      "password": "q23q",
+      "role": 2,
       "id": 3
     }
   ],

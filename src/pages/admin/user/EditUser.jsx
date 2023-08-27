@@ -13,7 +13,7 @@ const EditUser = () => {
   const { id } = useParams();
 
   const getUserUpdate = async () => {
-    const { data } = await get(id);
+    const { data } = await getOneUser(id);
     setName(data.name);
     setPassword(data.password);
     setRole(data.role);
